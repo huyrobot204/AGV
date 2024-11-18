@@ -1,0 +1,16 @@
+<launch>
+    <node pkg="joy" type="joy_node" name="joy_node" required="true" output = "screen" />
+    <param name="linear_max" value="0.3" />
+    <param name="linear_min" value="0.05" />
+    <param name="angular_max" value="0.3" />
+    <param name="angular_min" value="0.1" />
+    <param name="acceleration" value="0.8" />
+    <param name="deceleration" value="0.5" />
+
+    <param name="topic_joy" value="joy"/>
+    <param name="topic_cmdvel" value="cmd_vel"/>
+    <param name="topic_enablePS3" value="control_ps3"/>
+
+    <node pkg="ps3joy" type="controlPS3.py" name="ps3" output = "screen" />
+  </launch>
+  

@@ -1,0 +1,8 @@
+<launch>
+  <node pkg="joy" type="joy_node" name="joy_node" required="true" output = "screen" />
+  <!-- <node pkg="ps3joy" type="ps3" name="ps3" required="true" output = "screen" >
+    <param name="topic_vdai_vgoc" value="Twist"/>
+    <param name="vtdai_xe" type="double" value="0.6" />
+    <param name="vtgoc_xe" type="double" value="0.5" />
+  </node> -->
+</launch>

@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<launch>
+  
+  <arg name="use_map_topic" default="true"/>
+  <arg name="scan_topic" default="scan"/>
+
+  <node pkg="amcl" type="amcl" name="amcl">
+    <param name="use_map_topic" value="$(arg use_map_topic)"/>
+    <!-- Publish scans from best pose at a max of 10 Hz -->
+    <param name="odom_model_type" value="diff"/>
+
+    <param name="gui_publish_rate" value="10.0"/> <!-- Giảm để giảm tải CPU nếu cần -->
+
+    <!-- Laser and Particle Filter Configurations -->
+    <param name="laser_max_beams" value="180"/> <!-- Giới hạn ở 180 tia để giảm tải tính toán -->
+    <param name="laser_max_range" value="12.0"/> <!-- Tầm quét tối đa của RPLIDAR A1M8 là 12 mét -->
+    <param name="min_particles" value="200"/> <!-- Giảm số hạt tối thiểu để giảm tải -->
+    <param name="max_particles" value="1000"/> <!-- Giới hạn số hạt tối đa để tăng hiệu suất -->
+    <param name="kld_err" value="0.02"/> <!-- Tăng độ chính xác của KLD -->
+    <param name="kld_z" value="0.99"/> <!-- Mức độ tin cậy cao cho KLD -->
+
+    <!-- Odometry Noise Parameters (adjusted for better accuracy with RPLIDAR) -->
+    <param name="odom_alpha1" value="0.1"/> <!-- Giảm noise khi quay -->
+    <param name="odom_alpha2" value="0.1"/> <!-- Giảm noise khi di chuyển thẳng -->
+    <param name="odom_alpha3" value="0.1"/> <!-- Giảm noise khi di chuyển trên trục khi quay -->
+    <param name="odom_alpha4" value="0.1"/> <!-- Giảm noise khi quay khi di chuyển -->
+    <param name="odom_alpha5" value="0.05"/> <!-- Noise thấp cho các trường hợp không đồng nhất -->
+
+    <!-- Initial Pose and Covariance -->
+    <param name="initial_pose_x" value="0"/>
+    <param name="initial_pose_y" value="0"/>
+    <param name="initial_cov_xx" value="0.1"/>
+    <param name="initial_cov_yy" value="0.1"/>
+
+    <!-- Laser Model Parameters -->
+    <param name="laser_z_hit" value="0.9"/> <!-- Cân bằng trọng số cho laser với giá trị cao hơn -->
+    <param name="laser_z_short" value="0.05"/>
+    <param name="laser_z_max" value="0.05"/>
+    <param name="laser_z_rand" value="0.2"/> <!-- Tăng trọng số ngẫu nhiên để giảm ảnh hưởng của noise -->
+    <param name="laser_sigma_hit" value="0.2"/>
+    <param name="laser_lambda_short" value="0.1"/>
+    <param name="laser_model_type" value="likelihood_field"/>
+    <param name="laser_likelihood_max_dist" value="2.0"/>
+
+    <!-- Update Parameters for AMCL -->
+    <param name="update_min_d" value="0.1"/> <!-- Cập nhật sau khi di chuyển 0.1m -->
+    <param name="update_min_a" value="0.017"/> <!-- Cập nhật sau khi quay 1 độ -->
+
+    <!-- Frame and TF Configuration -->
+    <param name="odom_frame_id" value="odom"/>
+    <param name="base_frame_id" value="base_link"/>
+    <param name="global_frame_id" value="map"/>
+    <param name="tf_broadcast" value="true"/>
+    <param name="save_pose_rate" value="0.2"/>
+
+    <!-- Resampling and Tolerance -->
+    <param name="resample_interval" value="2"/>
+    <param name="transform_tolerance" value="0.1"/>
+    <param name="recovery_alpha_slow" value="0.001"/>
+    <param name="recovery_alpha_fast" value="0.1"/>
+
+    <!-- Remap Laser Topic -->
+    <remap from="scan" to="$(arg scan_topic)"/>
+  </node>
+</launch>

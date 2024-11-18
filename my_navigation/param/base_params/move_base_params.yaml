@@ -1,0 +1,8 @@
+shutdown_costmaps: false
+controller_frequency: 15.0 #Tốc độ tính bằng Hz để chạy vòng điều khiển và gửi lệnh vận tốc đến cơ sở.
+planner_patience: 5.0 #Người lập kế hoạch sẽ đợi bao lâu trong vài giây để cố gắng tìm một kế hoạch hợp lệ trước khi thực hiện các hoạt động xóa khoảng trống.
+controller_patience: 15.0 #Bộ điều khiển sẽ đợi bao lâu trong vài giây mà không nhận được điều khiển hợp lệ trước khi các hoạt động xóa khoảng trống được thực hiện.
+conservative_reset_dist: 3.0
+planner_frequency: 10.0 #Tỷ lệ tính bằng Hz để chạy vòng lập kế hoạch toàn cầu. Nếu tần suất được đặt thành 0,0, trình lập kế hoạch toàn cầu sẽ chỉ chạy khi nhận được mục tiêu mới hoặc trình lập kế hoạch cục bộ báo cáo rằng đường dẫn của nó bị chặn.
+oscillation_timeout: 10.0
+oscillation_distance: 0.2

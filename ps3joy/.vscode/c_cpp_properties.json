@@ -1,0 +1,34 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${workspaceFolder}/.vscode/browse.vc.db",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/hoang/Visai_main/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "/home/hoang/Visai_main/src/active_slam/include/**",
+        "/home/hoang/Visai_main/src/control_driver/include/**",
+        "/home/hoang/Visai_main/src/ekf/include/**",
+        "/home/hoang/Visai_main/src/go_c/include/**",
+        "/home/hoang/Visai_main/src/go_point/include/**",
+        "/home/hoang/Visai_main/src/kinetic_iv/include/**",
+        "/home/hoang/Visai_main/src/kinetic_rv/include/**",
+        "/home/hoang/Visai_main/src/mapping/include/**",
+        "/home/hoang/Visai_main/src/navigation/include/**",
+        "/home/hoang/Visai_main/src/pose_robot/include/**",
+        "/home/hoang/Visai_main/src/ps3joy/include/**",
+        "/home/hoang/Visai_main/src/save_data/include/**",
+        "/home/hoang/Visai_main/src/sick_scan-master/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

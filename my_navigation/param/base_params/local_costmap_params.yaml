@@ -1,0 +1,27 @@
+# local_costmap:
+#   global_frame: odom
+#   robot_base_frame: base_link
+#   update_frequency: 10.0
+#   publish_frequency: 10.0
+#   static_map: false
+#   rolling_window: true
+#   width: 6
+#   height: 6
+#   resolution: 0.1
+#   transform_tolerance: 0.7 # 0,25 giây độ trễ, nếu lớn hơn mức này, trình lập kế hoạch sẽ dừng
+  
+local_costmap:
+  global_frame: map
+  robot_base_frame: base_link
+  update_frequency: 20
+  publish_frequency: 20
+  static_map: false
+  rolling_window: true
+  width: 5.5
+  height: 5.5
+  resolution: 0.1
+  transform_tolerance: 0.5
+  
+  plugins:
+   - {name: static_layer,        type: "costmap_2d::StaticLayer"}
+   - {name: obstacle_layer,      type: "costmap_2d::ObstacleLayer"}
